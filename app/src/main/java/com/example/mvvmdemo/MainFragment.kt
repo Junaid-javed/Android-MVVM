@@ -19,6 +19,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         _binding = FragmentMainBinding.inflate(inflater, container, false)
 

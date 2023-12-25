@@ -1,9 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.MvvmDemo" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionModeOverlay">true</item>
     </style>
 
     <style name="Theme.MvvmDemo" parent="Base.Theme.MvvmDemo" />
+
+    <style name="EditText.White" parent="Base.Theme.MvvmDemo">
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorControlHighlight">@android:color/white</item>
+        <item name="colorControlNormal">@color/grey_10</item>
+    </style>
+
+    <style name="EditText.White.Hint" parent="@style/EditText.White">
+        <item name="colorAccent">@android:color/white</item>
+        <item name="android:textColorHint">@color/grey_10</item>
+    </style>
+
 </resources>

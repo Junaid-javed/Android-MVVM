@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="153dp">
+    android:background="@color/white"
+    tools:context=".LoginActivity">
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Register"
+        android:text="REGISTER"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etPasswordConfirm"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etPasswordConfirm"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordConfirm" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -37,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
+            android:textColor="@color/black"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="158dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
+            android:textColor="@color/black"
             android:inputType="textEmailAddress"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="158dp" />
@@ -80,6 +82,7 @@
             android:layout_height="wrap_content"
             android:hint="Phone"
             android:inputType="number"
+            android:textColor="@color/black"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="158dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -100,6 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
+            android:textColor="@color/black"
             android:inputType="textPassword"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="158dp" />
@@ -120,8 +124,9 @@
             android:id="@+id/passwordConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password Confirmation"
+            android:hint="Re-type Password"
             android:inputType="textPassword"
+            android:textColor="@color/black"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="158dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -131,8 +136,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register User"
-        android:textSize="20sp"
+        android:text="Sign Up"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/etName"
         app:layout_constraintEnd_toEndOf="parent"
