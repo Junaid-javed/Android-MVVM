@@ -30,6 +30,7 @@ class RegisterFragment : Fragment() {
 
     private lateinit var registerViewModel: RegisterViewModel
     private lateinit var registerRepository: RegisterRepository
+    private var isRegistrationComplete = false
 
 
     override fun onCreateView(
@@ -46,12 +47,14 @@ class RegisterFragment : Fragment() {
             RegisterViewModelFactory(registerRepository)
         )[RegisterViewModel::class.java]
 
-        registerUser()
+        if (!isRegistrationComplete) {
+            registerUser()
+            isRegistrationComplete = true
+        }
 
         binding.btnRegister.setOnClickListener {
+            isRegistrationComplete = false
             validateFields()
-          //  findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-          //  throw RuntimeException("This is an intentional crash for testing purposes")
         }
 
         return binding.root
@@ -63,6 +66,7 @@ class RegisterFragment : Fragment() {
                 binding.progressBar.visibility = View.GONE
                 Toast.makeText(requireActivity(), it.message, Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+
             } else {
                 binding.progressBar.visibility = View.GONE
             }
@@ -77,40 +81,40 @@ class RegisterFragment : Fragment() {
     }
 
     private fun validateFields() {
-            val username = binding.username.text.toString()
-            val email = binding.email.text.toString()
-            val password = binding.password.text.toString()
-            val confirmPassword = binding.passwordConfirm.text.toString()
-            val phone = binding.phone.text.toString()
+        val username = binding.username.text.toString()
+        val email = binding.email.text.toString()
+        val password = binding.password.text.toString()
+        val confirmPassword = binding.passwordConfirm.text.toString()
+        val phone = binding.phone.text.toString()
 
-            if (username.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty() || confirmPassword.isEmpty()) {
-                showToast("All fields must be filled.")
-                return
-            }
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty() || confirmPassword.isEmpty()) {
+            showToast("All fields must be filled.")
+            return
+        }
 
-            if (!isValidEmail(email)) {
-                showToast("Invalid email address.")
-                return
-            }
+        if (!isValidEmail(email)) {
+            showToast("Invalid email address.")
+            return
+        }
 
-            if (password.length < 8) {
-                showToast("Password must be at least 8 characters.")
-                return
-            }
+        if (password.length < 8) {
+            showToast("Password must be at least 8 characters.")
+            return
+        }
 
-            if (confirmPassword.length < 8) {
-                showToast("Password must be at least 8 characters.")
-                return
-            }
+        if (confirmPassword.length < 8) {
+            showToast("Password must be at least 8 characters.")
+            return
+        }
 
-            if (password != confirmPassword) {
-                showToast("Passwords do not match.")
-                return
-            }
+        if (password != confirmPassword) {
+            showToast("Passwords do not match.")
+            return
+        }
 
-            // All validations passed, you can proceed with further actions
-            binding.progressBar.visibility = View.VISIBLE
-            registerViewModel.registerUser(username, email, phone, password, confirmPassword)
+        // All validations passed, you can proceed with further actions
+        binding.progressBar.visibility = View.VISIBLE
+        registerViewModel.registerUser(username, email, phone, password, confirmPassword)
     }
 
     private fun isValidEmail(email: String): Boolean {
